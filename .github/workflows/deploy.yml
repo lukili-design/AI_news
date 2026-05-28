@@ -32,8 +32,7 @@ jobs:
           node-version: 20
 
       - name: Install dependencies
-        # 使用 ci 安裝可以確保完全吻合 lock 檔，如果報錯也可以回落到 npm install
-        run: npm ci || npm install
+        run: npm install
 
       - name: Build
         run: npm run build
