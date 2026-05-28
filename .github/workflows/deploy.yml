@@ -1,0 +1,54 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # 如果您的主分支是 master，請將這裡改為 master
+
+# 設定 GitHub Actions 部署 Pages 所需的安全性權限
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 避免多個部署任務同時進行發生衝突
+concurrency:
+  group: 'pages'
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          # 自動尋找根目錄的 package-lock.json 來作快取快照
+          cache: 'npm'
+
+      - name: Install dependencies
+        # 使用 ci 安裝可以確保完全吻合 lock 檔，如果報錯也可以回落到 npm install
+        run: npm ci || npm install
+
+      - name: Build
+        run: npm run build
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Vite 預設在打包時會輸出靜態網頁檔案到 dist/ 目錄
+          path: './dist'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
