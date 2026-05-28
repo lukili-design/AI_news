@@ -1,0 +1,6 @@
+{
+  "name": "AI 新聞編輯室 CMS",
+  "description": "結合 AI 自動化速寫、分屏事實核對與雙軌配圖解決方案（原圖轉存與 AI 繪圖生成）的後台新聞審核與發布系統。",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
