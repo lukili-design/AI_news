@@ -196,30 +196,7 @@ export default function SettingsWorkspace({ disclaimer, setDisclaimer, onSave }:
         </div>
       </div>
 
-      {/* Built-in API credentials monitor cards */}
-      <div className="bg-slate-900 text-slate-100 rounded-3xl p-6 shadow-xl space-y-4">
-        <div className="flex items-center gap-2 text-indigo-400 font-bold text-xs uppercase tracking-widest">
-          <Key className="w-4 h-4 animate-bounce" /> 雲端接口與凭證環境變量
-        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 font-normal">
-          <div className="p-4 rounded-xl bg-slate-800/50 border border-slate-700 text-xs space-y-1">
-            <p className="text-slate-500 uppercase font-bold tracking-wider text-[10px]">GEMINI_API_KEY</p>
-            <p className="font-mono text-white opacity-80 truncate">••••••••••••••••••••••••</p>
-            <p className="text-[10px] text-indigo-400">已由 AI Studio 云基礎設施智能注入</p>
-          </div>
-          <div className="p-4 rounded-xl bg-slate-800/50 border border-slate-700 text-xs space-y-1">
-            <p className="text-slate-500 uppercase font-bold tracking-wider text-[10px]">DALL-E 3 Gateway</p>
-            <p className="font-mono text-emerald-400 font-bold">已啟用 (預設負載均衡代理端口)</p>
-            <p className="text-[10px] text-slate-400">當前健康度：Excellent (99.98% uptime)</p>
-          </div>
-          <div className="p-4 rounded-xl bg-slate-800/50 border border-slate-700 text-xs space-y-1">
-            <p className="text-slate-500 uppercase font-bold tracking-wider text-[10px]">OSS Storage Bucket</p>
-            <p className="font-mono text-white opacity-80 select-all font-medium">s3-hk-oss.news.local</p>
-            <p className="text-[10px] text-slate-400">在線代理下載模式：生效中</p>
-          </div>
-        </div>
-      </div>
     </div>
   );
 }
